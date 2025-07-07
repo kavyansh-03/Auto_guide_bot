@@ -22,24 +22,59 @@
 | L293D Motor Driver IC  | 1        |
 | HC-SR04 Ultrasonic Sensor | 1     |
 | Jumper Wires           | Several  |
-| Breadboard             | 1        |
 | 4x AA Battery Pack     | 1        |
 | Servo Motor (optional) | 1        |
 
 ---
 
-## ⚙️ Working Principle
+### ⚙️ Working Principle
 
-1. The ultrasonic sensor (HC-SR04) measures the distance to objects in front.
-2. If the distance is below a predefined threshold (e.g., 20 cm), the bot:
+The **Auto_guide_bot** operates using an ultrasonic sensor (HC-SR04) that continuously measures the distance between the bot and any obstacle in front of it.
+
+1. The ultrasonic sensor emits a sound wave via the **Trigger** pin.
+2. The wave reflects off any nearby object and is received by the **Echo** pin.
+3. The Arduino calculates the **time taken** for the echo to return and converts it into a **distance value**.
+4. If the distance is **greater than 20 cm**, the bot moves forward.
+5. If the distance is **less than or equal to 20 cm**, the bot:
    - Stops
-   - Turns either left or right
-   - Then resumes forward movement
-3. If no obstacle is detected, the bot continues moving forward.
+   - Turns left or right to avoid the obstacle
+   - Resumes forward motion when the path is clear
+
+This process repeats continuously, allowing the bot to navigate autonomously and avoid collisions in real-time.
+
 
 ---
 
-## 📁 Repository Structure
+### 🔌 Input Behavior
+
+The **Auto_guide_bot** uses an ultrasonic distance sensor (HC-SR04) as its primary input device. This sensor enables the bot to detect obstacles in its path and make movement decisions accordingly.
+
+#### 📥 Inputs:
+- **Ultrasonic Sensor (HC-SR04)**
+  - **Trigger Pin**: Sends out an ultrasonic pulse.
+  - **Echo Pin**: Receives the reflected pulse after it bounces off an obstacle.
+  - The Arduino calculates the time difference to determine the distance to the object.
+
+---
+
+### 🚦 Behavior Based on Input:
+
+| Measured Distance           | Bot Behavior                                  |
+|-----------------------------|-----------------------------------------------|
+| Greater than 20 cm          | Move forward continuously                     |
+| Less than or equal to 20 cm | Stop → Turn (left or right) → Resume forward |
+
+- The **threshold distance (20 cm)** is customizable in the code.
+- The robot functions **autonomously**, reacting in real time to sensor input.
+
+---
+
+### 🛠️ Optional Inputs for Expansion:
+- **Button Input**: To manually start or stop the bot.
+- **GPS Module (e.g., NEO-6M)**: To track the bot’s real-time location or guide it along a specific route.
+- **Servo Motor**: To rotate the ultrasonic sensor for wider obstacle detection coverage.
+
+
 
 
 
