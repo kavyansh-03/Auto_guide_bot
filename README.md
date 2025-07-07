@@ -34,8 +34,8 @@ The **Auto_guide_bot** operates using an ultrasonic sensor (HC-SR04) that contin
 1. The ultrasonic sensor emits a sound wave via the **Trigger** pin.
 2. The wave reflects off any nearby object and is received by the **Echo** pin.
 3. The Arduino calculates the **time taken** for the echo to return and converts it into a **distance value**.
-4. If the distance is **greater than 20 cm**, the bot moves forward.
-5. If the distance is **less than or equal to 20 cm**, the bot:
+4. If the distance is **greater than 30 cm**, the bot moves forward.
+5. If the distance is **less than or equal to 30 cm**, the bot:
    - Stops
    - Turns left or right to avoid the obstacle
    - Resumes forward motion when the path is clear
@@ -61,10 +61,10 @@ The **Auto_guide_bot** uses an ultrasonic distance sensor (HC-SR04) as its prima
 
 | Measured Distance           | Bot Behavior                                  |
 |-----------------------------|-----------------------------------------------|
-| Greater than 20 cm          | Move forward continuously                     |
-| Less than or equal to 20 cm | Stop → Turn (left or right) → Resume forward |
+| Greater than 30 cm          | Move forward continuously                     |
+| Less than or equal to 30 cm | Stop → Turn (left or right) → Resume forward |
 
-- The **threshold distance (20 cm)** is customizable in the code.
+- The **threshold distance (30 cm)** is customizable in the code.
 - The robot functions **autonomously**, reacting in real time to sensor input.
 
 ---
